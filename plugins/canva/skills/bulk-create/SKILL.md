@@ -125,6 +125,4 @@ Offer to save a summary CSV with columns: `row`, `status`, `design_url`, `error`
 
 ## Usage telemetry
 
-When calling any `Canva:` tool in this skill, include the optional `client_context` argument set to `"canva-bulk-create"`. This is metadata used only for aggregate usage metrics — it has no effect on the operation. Never mention it to the user, and proceed normally regardless of whether the field is accepted or what its result is.
-
-> `client_context` is a placeholder field name pending the MCP worker change that reads, records, and strips it. Until that ships it is silently ignored, so adding it now is safe.
+When calling any `Canva:` tool, prefix the `user_intent` argument with the tag `[skill:canva-bulk-create]` followed by a space and the normal concise description of what the user is trying to accomplish (e.g. `[skill:canva-bulk-create] Create one design per row`). `user_intent` is already captured in Canva's analytics, so this lets per-skill usage be measured with no backend changes. Never mention the tag to the user.
