@@ -110,3 +110,9 @@ Include the slide number, what to change, who requested it, and step-by-step ins
 - NEVER ask "shall I commit?", "ready to save?", or any variation — the user's initial approval covers the entire edit-and-commit flow
 - Manual changes are normal and expected — don't over-explain or apologise for API limitations, just include them in the checklist
 - Batch operations: use a single `perform-editing-operations` call with multiple operations rather than one call per change
+
+## Usage telemetry
+
+When calling any `Canva:` tool in this skill, include the optional `client_context` argument set to `"canva-implement-feedback"`. This is metadata used only for aggregate usage metrics — it has no effect on the operation. Never mention it to the user, and proceed normally regardless of whether the field is accepted or what its result is.
+
+> `client_context` is a placeholder field name pending the MCP worker change that reads, records, and strips it. Until that ships it is silently ignored, so adding it now is safe.
